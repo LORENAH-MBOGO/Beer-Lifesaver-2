@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "345186894175",
+    "project_id": "beer-lifesaver",
+    "storage_bucket": "beer-lifesaver.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:345186894175:android:8058439ce8b144863676ea",
+        "android_client_info": {
+          "package_name": "com.skylar.beer_lifesaver"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "345186894175-tdkrq7s2gff69rehciok6hcs848cgb5p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.skylar.beer_lifesaver",
+            "certificate_hash": "b170ddde59785d45b09ed92125f09d8b9f554397"
+          }
+        },
+        {
+          "client_id": "345186894175-36pdkb7td747125igheqccj27rkid162.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhZBxJcdtOQfLjbj3wjk5G-bB217uoFkM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "345186894175-36pdkb7td747125igheqccj27rkid162.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
