@@ -1,6 +1,7 @@
 package com.skylar.beer_lifesaver.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.skylar.beer_lifesaver.BeerStyleDetailActivity;
 import com.skylar.beer_lifesaver.R;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -47,7 +51,7 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
             return    mBeerStyles.size();
     }
 
-    public class StyleViewHolder extends RecyclerView.ViewHolder {
+    public class StyleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.styleNameTextView)
         TextView mStyleNameTextView;
@@ -62,19 +66,30 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
 
         private Context mContext;
 
+
         public StyleViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
 
             mContext = itemView.getContext();
-
+            itemView.setOnClickListener(this);
         }
 
         public void bindStyle(@NonNull Datum beerStyle) {
             mStyleNameTextView.setText((CharSequence) beerStyle.getName());
 
         }
+
+
+    @Override
+    public void onClick(View v) {
+        int itemPosition = getLayoutPosition();
+        Intent intent = new Intent(mContext, BeerStyleDetailActivity.class);
+        intent.putExtra("position", itemPosition);
+        intent.putExtra("beerStyles", Parcels.wrap(mBeerStyles));
+        mContext.startActivity(intent);
     }
+}
 }
 
 
@@ -141,14 +156,6 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
 //            mDescriptionNameTextView.setText(data.getDescription());
 //        }
 //
-//        @Override
-//        public void onClick(View v) {
-//            int itemPosition = getLayoutPosition();
-//            Intent intent = new Intent(mContext, BeerStyleDetailActivity.class);
-//            intent.putExtra("position", itemPosition);
-//            intent.putExtra("beerStyles", Parcels.wrap(datumList));
-//            mContext.startActivity(intent);
-//        }
 //
 //
 //        }

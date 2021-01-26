@@ -6,21 +6,6 @@
     android:layout_marginBottom="2dp"
     android:background="@color/colorSecondaryText">
 
-
-<!--    still under development-->
-<!--    <ImageView-->
-<!--        android:layout_width="130dp"-->
-<!--        android:layout_height="100dp"-->
-<!--        android:id="@+id/styleImageView"-->
-<!--        android:scaleType="centerCrop"/>-->
-
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:background="#ffffff"
-        android:layout_height="match_parent"
-        android:padding="10dp">
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -31,15 +16,6 @@
             android:textColor="@color/colorPrimary"/>
 
 
-<!--        To be worked on later?-->
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:text="Description"-->
-<!--            android:id="@+id/descriptionTextView"-->
-<!--            android:layout_below="@+id/descriptiontNameTextView"-->
-<!--            android:textStyle="italic"/>-->
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -47,4 +23,3 @@
     </LinearLayout>
 
 
-</LinearLayout>

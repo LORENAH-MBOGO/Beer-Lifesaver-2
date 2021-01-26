@@ -103,7 +103,7 @@ public class BeerStyleListActivity extends AppCompatActivity {
     }
 
     private void hideProgressBar() {
-        mProgressBar.setVisibility(View.GONE);
+        mProgressBar.setVisibility(View.VISIBLE);
 
     }
 }
