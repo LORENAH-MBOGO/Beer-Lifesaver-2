@@ -13,9 +13,9 @@ import network.BeerStyle;
 
 public class BeerStylePagerAdapter  extends FragmentPagerAdapter {
 
-    private ArrayList<BeerStyle> mBeerStyles;
+    ArrayList<BeerStyle> mBeerStyles;
 
-    public BeerStylePagerAdapter(@NonNull FragmentManager fm, ArrayList<BeerStyle> beerStyles) {
+    public BeerStylePagerAdapter(@NonNull FragmentManager fm, int behaviorResumeOnlyCurrentFragment, ArrayList<BeerStyle> beerStyles) {
         super(fm);
         mBeerStyles = beerStyles;
     }

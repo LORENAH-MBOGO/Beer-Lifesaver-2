@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
@@ -33,7 +34,7 @@ public class BeerStyleDetailActivity extends AppCompatActivity {
         mBeerStyles = Parcels.unwrap(getIntent().getParcelableExtra("beerStyles"));
         int startingPosition = getIntent().getIntExtra("position", 0);
 
-        adapterViewPager = new BeerStylePagerAdapter(getSupportFragmentManager(), mBeerStyles);
+        adapterViewPager = new BeerStylePagerAdapter(getSupportFragmentManager(), FragmentPagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT, mBeerStyles);
         mViewPager.setAdapter(adapterViewPager);
         mViewPager.setCurrentItem(startingPosition);
     }
