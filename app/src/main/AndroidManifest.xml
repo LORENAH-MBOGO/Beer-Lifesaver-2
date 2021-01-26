@@ -15,13 +15,16 @@
         <activity android:name=".BeerStyleDetailActivity"></activity>
         <activity android:name=".BeerStyleListActivity" />
         <activity android:name=".SavedBeerStyeListActivity" />
-        <activity android:name=".HomeActivity" />
+        <activity
+            android:name=".HomeActivity"
+           android:theme="@style/NoActionBarTheme" />
         <activity android:name=".AboutActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"
+                    android:theme="@style/NoActionBarTheme" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>

@@ -23,6 +23,14 @@
             android:text="Beer Style Name"
             android:textColor="@color/colorPrimary"/>
 
+    <Button
+        android:layout_width="127dp"
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_secondary_variant"
+        android:text="Save to Favs!"
+        android:textColor="@color/colorLightPrimery"
+        android:textStyle="bold" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"

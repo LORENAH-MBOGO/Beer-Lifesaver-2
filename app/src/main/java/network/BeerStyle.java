@@ -13,11 +13,15 @@ public class BeerStyle implements Parcelable
 {
     @SerializedName("name")
     @Expose
-    private List<Datum> name = null;
+    private List<Datum> name ;
 
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
+
+    @SerializedName("pushId")
+    @Expose
+    private String pushId ;
 
     /**
      * No args constructor for use in serialization
@@ -73,6 +77,14 @@ public class BeerStyle implements Parcelable
 
     public List<Datum> getName() {
     return name;
+    }
+
+    public String getPushId() {
+        return pushId;
+    }
+
+    public void setPushId(String pushId) {
+        this.pushId = pushId;
     }
 
 }

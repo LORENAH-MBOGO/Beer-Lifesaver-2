@@ -11,6 +11,8 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -68,6 +70,8 @@ public class BeerStyleDetailFragment extends Fragment implements View.OnClickLis
  @Override
  public void onClick(View view) {
  if (view == mSaveButton) {
+     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+     String uid = user.getUid();
         DatabaseReference beerStyleRef = FirebaseDatabase
                 .getInstance()
                 .getReference(Constants.FIREBASE_CHILD_BEER_STYLES);
