@@ -16,7 +16,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
+public class HomeActivity extends AppCompatActivity {
     @BindView(R.id.BeerInput)
     EditText mBeerInput;
     @BindView(R.id.bSearch)
@@ -29,13 +29,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+
+
         mSearchBeerStyleReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCH_BEER_STYLE);
 
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
         mFindBeerStyle.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,23 +48,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("userInput", userInput);
                 startActivity(intent);
 
-                Toast.makeText(HomeActivity.this, "Ahoy!! Here are your beers styles...",Toast.LENGTH_LONG).show();
+                Toast.makeText(HomeActivity.this, "Ahoy!! Here are your beers styles...", Toast.LENGTH_LONG).show();
 
             }
         });
     }
-        public void saveInputToFirebase(String userInput) {
-            mSearchBeerStyleReference.setValue(userInput);
-        }
 
-
-    @Override
-    public void onClick(View view) {
-
-            if (view == mSaved) {
-                Toast.makeText(this, "None for now", Toast.LENGTH_LONG).show();
-            }
-
-        }
+    public void saveInputToFirebase(String userInput) {
+        mSearchBeerStyleReference.setValue(userInput);
+    }
 
 }
