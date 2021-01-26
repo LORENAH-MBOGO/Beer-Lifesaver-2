@@ -10,6 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,28 +25,36 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     TextView mLogo;
     @BindView(R.id.bSaved)
     Button mSaved;
+    private DatabaseReference mSearchBeerStyleReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        mSearchBeerStyleReference = FirebaseDatabase
+                .getInstance()
+                .getReference()
+                .child(Constants.FIREBASE_CHILD_SEARCH_BEER_STYLE);
 
         ButterKnife.bind(this);
         mFindBeerStyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String userInput = mBeerInput.getText().toString();
+                saveInputToFirebase(userInput);
                 Intent intent = new Intent(HomeActivity.this, BeerStyleListActivity.class);
-                intent.putExtra("beer", userInput);
+                intent.putExtra("userInput", userInput);
                 startActivity(intent);
 
                 Toast.makeText(HomeActivity.this, "Ahoy!! Here are your beers styles...",Toast.LENGTH_LONG).show();
 
             }
         });
-        mSaved.setOnClickListener(this);
     }
+        public void saveInputToFirebase(String userInput) {
+            mSearchBeerStyleReference.setValue(userInput);
+        }
+
 
     @Override
     public void onClick(View view) {
