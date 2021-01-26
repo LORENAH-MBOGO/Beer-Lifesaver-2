@@ -56,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void saveInputToFirebase(String userInput) {
-        mBeerStyleReference.setValue(userInput);
+        mBeerStyleReference.push().setValue(userInput);
     }
 
 }
