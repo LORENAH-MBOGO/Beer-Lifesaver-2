@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,9 +46,9 @@ public class HomeActivity extends AppCompatActivity {
 
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
-                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
-                    String location = locationSnapshot.getValue().toString();
-                    Log.d("Locations updated", "location: " + location); //log
+                for (DataSnapshot userInputSnapshot : dataSnapshot.getChildren()) {
+                    String userInput = mBeerInput.getText().toString();
+                    Log.d("beerstyles updated", "userInput: " + userInput); //log
                 }
             }
 
@@ -76,8 +77,14 @@ public class HomeActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mBeerStyleReference.removeEventListener((ChildEventListener) mBeerStyleReference);
+
+    }
+
     public void saveInputToFirebase(String userInput) {
         mBeerStyleReference.push().setValue(userInput);
     }
-
 }
