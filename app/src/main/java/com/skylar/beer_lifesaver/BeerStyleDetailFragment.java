@@ -16,9 +16,13 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import org.parceler.Parcels;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import network.BeerStyle;
+import network.Datum;
 
 public class BeerStyleDetailFragment extends Fragment implements View.OnClickListener{
 
@@ -50,9 +54,16 @@ public class BeerStyleDetailFragment extends Fragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beer_style_detail, container, false);
         ButterKnife.bind(this, view);
+
+
+        List<String> data = new ArrayList<>();
+
+        for (Datum datum: mBeerStyle.getData()) {
+            datum.getName();
+        }
+
+        mStyleName.setText((CharSequence) mBeerStyle.getName());
         return view;
-
-
     }
  @Override
  public void onClick(View view) {

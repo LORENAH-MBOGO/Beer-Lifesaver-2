@@ -306,4 +306,6 @@ public class Datum implements Parcelable
         return  0;
     }
 
+    public void add(String name) {
+    }
 }

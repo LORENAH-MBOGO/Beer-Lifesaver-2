@@ -11,16 +11,13 @@ import java.util.List;
 
 public class BeerStyle implements Parcelable
 {
-
-    @SerializedName("message")
+    @SerializedName("name")
     @Expose
-    private String message;
+    private List<Datum> name = null;
+
     @SerializedName("data")
     @Expose
     private List<Datum> data = null;
-    @SerializedName("status")
-    @Expose
-    private String status;
 
     /**
      * No args constructor for use in serialization
@@ -29,30 +26,18 @@ public class BeerStyle implements Parcelable
     public BeerStyle() {
     }
 
-    /**
-     * 
-     * @param data
-     * @param message
-     * @param status
-     */
-    public BeerStyle(String message, List<Datum> data, String status) {
+    public BeerStyle(List<Datum> data) {
         super();
-        this.message = message;
-        this.data = data;
-        this.status = status;
     }
 
     protected BeerStyle(Parcel in) {
-        message = in.readString();
         data = in.createTypedArrayList(Datum.CREATOR);
-        status = in.readString();
+
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(message);
         dest.writeTypedList(data);
-        dest.writeString(status);
     }
 
     @Override
@@ -72,28 +57,18 @@ public class BeerStyle implements Parcelable
         }
     };
 
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
     public List<Datum> getData() {
         return data;
     }
 
     public void setData(List<Datum> data) {
         this.data = data;
+
     }
 
-    public String getStatus() {
-        return status;
-    }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public List<Datum> getName() {
+    return name;
     }
 
 }
