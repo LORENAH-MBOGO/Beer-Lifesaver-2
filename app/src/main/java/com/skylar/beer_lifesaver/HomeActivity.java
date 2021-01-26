@@ -76,6 +76,9 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
     }
+    public void saveInputToFirebase(String userInput) {
+        mBeerStyleReference.push().setValue(userInput);
+    }
 
     @Override
     protected void onDestroy() {
@@ -84,7 +87,5 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-    public void saveInputToFirebase(String userInput) {
-        mBeerStyleReference.push().setValue(userInput);
-    }
+
 }
