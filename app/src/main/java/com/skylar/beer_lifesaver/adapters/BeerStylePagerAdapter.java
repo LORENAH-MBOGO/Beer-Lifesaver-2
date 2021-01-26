@@ -22,7 +22,7 @@ public class BeerStylePagerAdapter  extends FragmentPagerAdapter {
 
     @Override
         public CharSequence getPageTitle ( int position){
-            return (CharSequence) mBeerStyles.get(position).getName();
+            return (CharSequence) mBeerStyles.get(position).getData();
         }
 
 

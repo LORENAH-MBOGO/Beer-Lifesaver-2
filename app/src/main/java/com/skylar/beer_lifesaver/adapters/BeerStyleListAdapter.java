@@ -84,7 +84,7 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
     @Override
     public void onClick(View v) {
         int itemPosition = getLayoutPosition();
-        Intent intent = new Intent(mContext, BeerStyleDetailActivity.class);
+        Intent intent = new Intent(mContext, BeerStyleListAdapter.class);
         intent.putExtra("position", itemPosition);
         intent.putExtra("beerStyles", Parcels.wrap(mBeerStyles));
         mContext.startActivity(intent);

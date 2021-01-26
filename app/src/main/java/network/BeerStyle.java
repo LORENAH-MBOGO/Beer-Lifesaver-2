@@ -66,6 +66,10 @@ public class BeerStyle implements Parcelable
 
     }
 
+    public void setName(List<Datum> data) {
+        this.name = name;
+
+    }
 
     public List<Datum> getName() {
     return name;
