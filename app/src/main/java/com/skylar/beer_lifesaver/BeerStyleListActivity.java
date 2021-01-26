@@ -1,11 +1,13 @@
 package com.skylar.beer_lifesaver;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +25,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static java.nio.file.Paths.get;
+
 public class BeerStyleListActivity extends AppCompatActivity {
     public static final String TAG = BeerStyleListActivity.class.getSimpleName();
     private static final String SANDBOX_KEY = Constants.SANDBOX_KEY;
@@ -39,6 +43,7 @@ public class BeerStyleListActivity extends AppCompatActivity {
 
     public List<Datum> mBeerStyles;
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +51,8 @@ public class BeerStyleListActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         Intent intent = getIntent();
-        String styles = ((Intent) intent).getStringExtra("userInput");
-
+        String userInput = intent.getStringExtra("userInput");
+       get(userInput);
         BeerApi client = BeerClient.getClient();
 
         Call<BeerStyle> call = client.getStyles(SANDBOX_KEY);

@@ -2,6 +2,7 @@ package com.skylar.beer_lifesaver;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -10,8 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -35,6 +39,23 @@ public class HomeActivity extends AppCompatActivity {
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCH_BEER_STYLE);
+
+
+        mBeerStyleReference.addValueEventListener(new ValueEventListener() { //attach listener
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) { //something changed!
+                for (DataSnapshot locationSnapshot : dataSnapshot.getChildren()) {
+                    String location = locationSnapshot.getValue().toString();
+                    Log.d("Locations updated", "location: " + location); //log
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) { //update UI here if error occurred.
+
+            }
+        });
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
