@@ -17,6 +17,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.skylar.beer_lifesaver.BeerStyleDetailActivity;
+import com.skylar.beer_lifesaver.BeerStyleListActivity;
 import com.skylar.beer_lifesaver.Constants;
 import com.skylar.beer_lifesaver.R;
 
@@ -67,7 +68,7 @@ public class FirebaseBeerStyleViewHolder extends RecyclerView.ViewHolder impleme
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, BeerStyleDetailActivity.class);
+                Intent intent = new Intent(mContext, BeerStyleListActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("beerStyles", Parcels.wrap(beerStyles));
 
