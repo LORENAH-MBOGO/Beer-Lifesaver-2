@@ -25,13 +25,13 @@ public class HomeActivity extends AppCompatActivity {
     TextView mLogo;
     @BindView(R.id.bSaved)
     Button mSaved;
-    private DatabaseReference mSearchBeerStyleReference;
+    private DatabaseReference mBeerStyleReference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
 
-        mSearchBeerStyleReference = FirebaseDatabase
+        mBeerStyleReference = FirebaseDatabase
                 .getInstance()
                 .getReference()
                 .child(Constants.FIREBASE_CHILD_SEARCH_BEER_STYLE);
@@ -39,6 +39,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         ButterKnife.bind(this);
+
         mFindBeerStyle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +56,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void saveInputToFirebase(String userInput) {
-        mSearchBeerStyleReference.setValue(userInput);
+        mBeerStyleReference.setValue(userInput);
     }
 
 }
