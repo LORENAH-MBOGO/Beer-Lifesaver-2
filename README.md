@@ -36,10 +36,13 @@ Java
 ## BDD
 
 ```bash
+Sign up
+Sign in
 View About Us section
 Navigate to search page
 Enter any beer style in search bar 
 View different names of beerstyles
+Sign out
 
 
 ```
