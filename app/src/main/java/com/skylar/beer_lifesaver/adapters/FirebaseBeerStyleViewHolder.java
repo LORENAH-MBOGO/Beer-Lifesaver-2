@@ -20,6 +20,7 @@ import com.skylar.beer_lifesaver.BeerStyleDetailActivity;
 import com.skylar.beer_lifesaver.BeerStyleListActivity;
 import com.skylar.beer_lifesaver.Constants;
 import com.skylar.beer_lifesaver.R;
+import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
@@ -48,7 +49,6 @@ public class FirebaseBeerStyleViewHolder extends RecyclerView.ViewHolder impleme
     public void bindStyle(BeerStyle beerStyle) {
         TextView beerStyleNameTextView = mView.findViewById(R.id.styleNameTextView);
 
-
         beerStyleNameTextView.setText((CharSequence) beerStyle.getName());
     }
     @Override
@@ -68,7 +68,7 @@ public class FirebaseBeerStyleViewHolder extends RecyclerView.ViewHolder impleme
 
                 int itemPosition = getLayoutPosition();
 
-                Intent intent = new Intent(mContext, BeerStyleListActivity.class);
+                Intent intent = new Intent(mContext, BeerStyleDetailActivity.class);
                 intent.putExtra("position", itemPosition + "");
                 intent.putExtra("beerStyles", Parcels.wrap(beerStyles));
 

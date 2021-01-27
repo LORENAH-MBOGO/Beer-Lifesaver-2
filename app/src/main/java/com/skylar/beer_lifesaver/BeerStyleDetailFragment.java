@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -67,19 +65,17 @@ public class BeerStyleDetailFragment extends Fragment implements View.OnClickLis
         mStyleName.setText((CharSequence) mBeerStyle.getName());
         return view;
     }
- @Override
- public void onClick(View view) {
- if (view == mSaveButton) {
-     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-     String uid = user.getUid();
-        DatabaseReference beerStyleRef = FirebaseDatabase
-                .getInstance()
-                .getReference(Constants.FIREBASE_CHILD_BEER_STYLES);
+    @Override
+    public void onClick(View view) {
+        if (view == mSaveButton) {
+            DatabaseReference beerStyleRef = FirebaseDatabase
+                    .getInstance()
+                    .getReference(Constants.FIREBASE_CHILD_BEER_STYLES);
 
-        DatabaseReference pushRef = beerStyleRef.push();
-        pushRef.setValue(mBeerStyle);
+            DatabaseReference pushRef = beerStyleRef.push();
+            pushRef.setValue(mBeerStyle);
 
-        Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), "Saved", Toast.LENGTH_SHORT).show();
+        }
     }
-}
 }

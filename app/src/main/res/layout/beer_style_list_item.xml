@@ -15,27 +15,15 @@
         android:background="@drawable/beer"/>
 
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/styleNameTextView"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:text="Beer Style Name"
-            android:textColor="@color/colorPrimary"/>
-
-    <Button
-        android:layout_width="127dp"
+        android:id="@+id/styleNameTextView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/design_default_color_secondary_variant"
-        android:text="Save to Favs!"
-        android:textColor="@color/colorLightPrimery"
+        android:text="Beer Style Name"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp"
         android:textStyle="bold" />
 
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        </RelativeLayout>
-    </LinearLayout>
+</LinearLayout>
 
 

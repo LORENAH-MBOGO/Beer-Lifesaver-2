@@ -22,7 +22,6 @@ import butterknife.ButterKnife;
 import network.Datum;
 
 public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdapter.StyleViewHolder> {
-
     private List<Datum> mBeerStyles;
     private Context mContext;
 
@@ -48,10 +47,10 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
     @Override
     public int getItemCount() {
 //        return 9;
-        return mBeerStyles.size();
+        return    mBeerStyles.size();
     }
 
-    public class StyleViewHolder extends RecyclerView.ViewHolder {
+    public class StyleViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         @BindView(R.id.styleNameTextView)
         TextView mStyleNameTextView;
@@ -64,7 +63,7 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
             ButterKnife.bind(this, itemView);
 
             mContext = itemView.getContext();
-
+            itemView.setOnClickListener(this);
         }
 
         public void bindStyle(@NonNull Datum beerStyle) {
@@ -72,5 +71,14 @@ public class BeerStyleListAdapter extends RecyclerView.Adapter<BeerStyleListAdap
 
         }
 
+
+        @Override
+        public void onClick(View v) {
+            int itemPosition = getLayoutPosition();
+            Intent intent = new Intent(mContext, BeerStyleListAdapter.class);
+            intent.putExtra("position", itemPosition);
+            intent.putExtra("beerStyles", Parcels.wrap(mBeerStyles));
+            mContext.startActivity(intent);
+        }
     }
 }
